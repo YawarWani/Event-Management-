@@ -20,7 +20,6 @@ function togglePasswordVisibility(inputId, toggleId) {
           const data = Object.fromEntries(formData.entries());
 
       
-      // Validate password length and special character
       const password = data.password;
       const confirmPassword = data.confirmPassword;
 

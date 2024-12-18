@@ -23,7 +23,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 body: JSON.stringify(data)
             })
             .then(response => {
-                // Always parse JSON response, even for error responses
                 return response.json().then(data => {
                     if (!response.ok) {
                         throw new Error(data.message || 'Login failed');
@@ -40,11 +39,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             })
             .catch(error => {
-                // Show alert for login failure
                 alert(error.message || 'Login failed. Please check your credentials.');
             })
             .finally(() => {
-                // Reset button state
                 submitButton.disabled = false;
                 submitButton.innerHTML = 'Login';
             });

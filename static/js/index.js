@@ -39,29 +39,28 @@ document.addEventListener('DOMContentLoaded', async () => {
     async function updateAllButtons() {
         const promises = [];
 
-        registrationBtns.forEach((btn) => {
+        registrationBtns.forEach((btn) => 
+            {
             const eventId = btn.getAttribute('data-event-id');
 
-            const updatePromise = (async () => {
-                // First, check if registration is open
+            const updatePromise = (async () =>
+                {
                 const isOpen = await checkRegistrationStatus(eventId);
 
-                if (!isOpen) {
-                    // If closed, set button state
+                if (!isOpen) 
+                    {
                     btn.textContent = 'Closed';
                     btn.disabled = true;
                     btn.classList.remove('btn-primary');
                     btn.classList.add('btn-secondary');
                 } else {
-                    // If open, check registration status
                     await updateRegistrationStatus(eventId, btn);
                 }
 
-                // Handle registration form submission
                 const form = document.getElementById(`registration-form-${eventId}`);
-                form.addEventListener('submit', async (e) => {
+                form.addEventListener('submit', async (e) => 
+                    {
                     e.preventDefault();
-
                     try {
                         const response = await fetch('/register_event', {
                             method: 'POST',
@@ -74,7 +73,6 @@ document.addEventListener('DOMContentLoaded', async () => {
                         const data = await response.json();
 
                         if (data.success) {
-                            // Update button state
                             btn.textContent = 'Registered';
                             btn.disabled = true;
                             btn.classList.remove('btn-primary');
@@ -93,13 +91,11 @@ document.addEventListener('DOMContentLoaded', async () => {
             promises.push(updatePromise); // Collect all promises
         });
 
-        // Wait for all updates to complete
         await Promise.all(promises);
     }
 
-    // Show loader while updating buttons
     await updateAllButtons();
-    loadingOverlay.style.display = 'none'; // Hide loader when updates are done
+    loadingOverlay.style.display = 'none'; 
 });
 
 function setFilter(filterType) {

@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const passwordInput = document.getElementById('password');
     const passwordToggle = document.getElementById('passwordToggle');
     
-    // Password toggle functionality
     passwordToggle.addEventListener('click', function() {
         if (passwordInput.type === 'password') {
             passwordInput.type = 'text';
