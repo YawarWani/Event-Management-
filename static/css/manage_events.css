@@ -1,0 +1,15 @@
+
+.header-form {
+  background-color: #f8f9fa;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+  padding: 0;
+}
+.header-form.show {
+  max-height: 500px;
+  padding: 20px 0;
+}
+.toggle-form-btn {
+  margin-bottom: 15px;
+}

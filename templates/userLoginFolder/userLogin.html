@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - Event Management</title>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2ecc71;
+            --background-start: #667eea;
+            --background-end: #764ba2;
+            --text-primary: #ffffff;
+            --text-accent: #3498db;
+        }
+
+        body {
+            background: linear-gradient(15deg, var(--background-start) 0%, var(--background-end) 100%);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            font-family: 'Inter', 'Arial', sans-serif;
+            margin: 0;
+            overflow: hidden;
+            line-height: 1.6;
+        }
+
+        .login-container {
+            width: 600px;
+            max-width: 95%;
+            margin: 0 auto;
+            display: flex;
+            border-radius: 20px;
+            box-shadow: 
+                0 15px 35px rgba(0,0,0,0.1),
+                0 5px 15px rgba(0,0,0,0.05);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(161, 16, 16, 0.2);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .login-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 
+                0 20px 40px rgba(0,0,0,0.15),
+                0 7px 20px rgba(0,0,0,0.1);
+        }
+
+        .login-image 
+        {
+            background: url('/static/UserSignUp/logo/EVET-logo.png') no-repeat center center;
+            background-size: contain;
+            width: 400px;
+            position: relative;
+        }
+
+        .login-form 
+        {
+            width: 400px;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: rgba(0,0,0,0.05);
+        }
+
+        .welcome-text
+         {
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .welcome-text h2
+         {
+            color: var(--text-accent);
+            font-weight: 700;
+            position: relative;
+            animation: textGlow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes textGlow 
+        {
+            from 
+            {
+                text-shadow: 0 0 5px rgba(84, 137, 173, 0.5);
+                color: var(--text-accent);
+            }
+
+            to 
+            {
+                text-shadow: 0 0 20px rgba(52, 152, 219, 1);
+                color: #aed0e7;
+            }
+        }
+
+        .form-control
+         {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+            border-radius: 8px;
+        }
+
+        .form-control:focus
+         {
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
+            border-color: var(--text-accent);
+            color: var(--text-primary);
+        }
+
+        .btn-primary 
+        {
+            background-color: var(--text-accent);
+            border: none;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .btn-primary:hover
+         {
+            background-color: #2980b9;
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .error-container 
+        {
+            margin-top: 15px;
+            color: #e74c3c;
+            text-align: center;
+        }
+        label 
+        {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            opacity: 100;
+        }
+
+        .password-container {
+            position: relative;
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 10px;
+            top: 70%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: rgba(255, 255, 255, 0.5);
+            transition: color 0.3s ease;
+        }
+
+        .password-toggle:hover {
+            color: var(--text-accent);
+        }
+
+        .signup-link {
+            text-align: center;
+            margin-top: 15px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .signup-link a {
+            color: var(--text-accent);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .signup-link a:hover {
+            color: #2980b9;
+            text-decoration: underline;
+        }
+
+        .admin-login-anchor {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 0.8em;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .admin-login-anchor a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .admin-login-anchor a:hover {
+            color: #27ae60;
+            text-decoration: underline;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .login-container {
+                flex-direction: column;
+                width: 95%;
+            }
+            
+            .login-image, .login-form {
+                width: 100%;
+            }
+        }
+
+        /* Subtle Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animated-element {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+    </style> -->
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/user_login.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="login-container">
+            <div class="login-image d-none d-md-flex">
+                <!-- Image side can be used for branding or illustration -->
+            </div>
+            <div class="login-form">
+                <div class="welcome-text">
+                    <h2>Welcome, Dear User</h2>
+                </div>
+                <form id="loginForm">
+                    <div class="error-container"></div>
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Email</label>
+                        <input type="text" class="form-control" id="email" name="email" required>
+                    </div>
+                    <div class="mb-3 password-container">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="password" name="password" required>
+                        <i class="fas fa-eye-slash password-toggle" id="passwordToggle"></i>
+                    </div>
+                    <button id="submit" type="submit" class="btn btn-primary w-100">Login</button>
+                    <div class="signup-link">
+                        Don't have an account? <a href="/sign_up_user">Sign up</a>
+                    </div>
+                    <div class="admin-login-anchor">
+                        <a href="/login">Admin Login</a>
+                    </div>
+                    
+                </form>
+                
+        </div>
+    </div>
+
+    <script src="static/js/user_login.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

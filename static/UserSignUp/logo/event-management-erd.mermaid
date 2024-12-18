@@ -1,0 +1,27 @@
+erDiagram
+    SIGNUPUSER ||--o{ EVENT_REGISTRATIONS : "registers for"
+    EVENTS ||--o{ EVENT_REGISTRATIONS : "has"
+    
+    SIGNUPUSER {
+        string username PK
+        string email PK
+        string password
+    }
+    
+    EVENTS {
+        int id PK
+        string name
+        string description
+        date event_date
+        date last_registration_date
+        int vacancies
+        string venue
+        boolean is_open
+    }
+    
+    EVENT_REGISTRATIONS {
+        int id PK
+        string email FK
+        int event_id FK
+        date registration_date
+    }
